@@ -3,7 +3,7 @@ package com.udacity.popularmoviesstage1app.utils;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.udacity.popularmoviesstage1app.models.Movie;
+import com.udacity.popularmoviesstage1app.models.MovieList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +24,8 @@ import java.util.ArrayList;
  */
 public final class QueryUtils {
 
+    public static final String LOG_TAG = QueryUtils.class.getName();
+
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
      * This class is only meant to hold static variables and methods, which can be accessed
@@ -32,12 +34,10 @@ public final class QueryUtils {
     private QueryUtils() {
     }
 
-    public static final String LOG_TAG = QueryUtils.class.getName();
-
     /**
-     * Query the Movies dataset and return an {@link Movie} object to represent a single movie.
+     * Query the Movies dataset and return an {@link MovieList} object to represent a single movie.
      */
-    public static ArrayList<Movie> fetchMoviesData(String requestUrl) {
+    public static ArrayList<MovieList> fetchMoviesData(String requestUrl) {
 
         // Create URL object
         URL url = createUrl(requestUrl);
@@ -127,13 +127,13 @@ public final class QueryUtils {
     }
 
     /**
-     * Return an {@link Movie} object by parsing out information
+     * Return an {@link MovieList} object by parsing out information
      * about the first movie from the input moviesJSON string.
      */
-    private static ArrayList<Movie> extractFeatureFromJson(String moviesJSON) {
+    private static ArrayList<MovieList> extractFeatureFromJson(String moviesJSON) {
 
-        Movie mv;
-        ArrayList<Movie> movies = new ArrayList<>();
+        MovieList mv;
+        ArrayList<MovieList> movies = new ArrayList<>();
 
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(moviesJSON)) {
@@ -142,13 +142,18 @@ public final class QueryUtils {
 
         try {
             JSONObject baseJsonResponse = new JSONObject(moviesJSON);
-            JSONArray featureArray = baseJsonResponse.getJSONArray("features");
+            JSONArray moviesArray = baseJsonResponse.getJSONArray("results");
 
             // If there are results in the features array
-            if (featureArray.length() > 0) {
-                for(int i=0;i<featureArray.length();i++) {
+            if (moviesArray.length() > 0) {
+                for (int i = 0; i < moviesArray.length(); i++) {
+                    JSONObject movie = moviesArray.getJSONObject(i);
+                    String id = movie.getString("id");
+                    String posterPath = movie.optString("poster_path");
+                    String title = movie.optString("title");
 
-
+                    MovieList movieListObject = new MovieList(id,title,posterPath);
+                    movies.add(movieListObject);
 
                 }
             }

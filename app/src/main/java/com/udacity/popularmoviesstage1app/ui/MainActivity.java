@@ -10,13 +10,13 @@ import android.content.Loader;
 import android.os.Bundle;
 
 import com.udacity.popularmoviesstage1app.R;
-import com.udacity.popularmoviesstage1app.adapters.MoviesGridAdpater;
-import com.udacity.popularmoviesstage1app.models.Movie;
+import com.udacity.popularmoviesstage1app.models.MovieList;
 import com.udacity.popularmoviesstage1app.tasks.MovieLoader;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Movie>> {
+
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<MovieList>> {
 
     public static final String LOG_TAG = MainActivity.class.getName();
 
@@ -48,18 +48,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public Loader<List<Movie>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<MovieList>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
         return new MovieLoader(this, MOVIES_REQUEST_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
+    public void onLoadFinished(Loader<List<MovieList>> loader, List<MovieList> movies) {
 
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Movie>> loader) {
+    public void onLoaderReset(Loader<List<MovieList>> loader) {
 
     }
 }

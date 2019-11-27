@@ -4,12 +4,12 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.udacity.popularmoviesstage1app.models.Movie;
+import com.udacity.popularmoviesstage1app.models.MovieList;
 import com.udacity.popularmoviesstage1app.utils.QueryUtils;
 
 import java.util.List;
 
-public class MovieLoader extends AsyncTaskLoader<List<Movie>> {
+public class MovieLoader extends AsyncTaskLoader<List<MovieList>> {
 
     /** Tag for log messages */
     private static final String LOG_TAG = MovieLoader.class.getName();
@@ -28,13 +28,13 @@ public class MovieLoader extends AsyncTaskLoader<List<Movie>> {
     }
 
     @Override
-    public List<Movie> loadInBackground() {
+    public List<MovieList> loadInBackground() {
         if(TextUtils.isEmpty(mUrl)){
             return null;
         }
 
         // Perform the network request, parse the response, and extract a list of movies.
-        List<Movie> movies = QueryUtils.fetchMoviesData(mUrl);
+        List<MovieList> movies = QueryUtils.fetchMoviesData(mUrl);
         return movies;
     }
 }
