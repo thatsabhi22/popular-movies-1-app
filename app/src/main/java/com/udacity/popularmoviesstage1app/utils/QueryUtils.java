@@ -154,7 +154,6 @@ public final class QueryUtils {
 
                     MovieList movieListObject = new MovieList(id,title,posterPath);
                     movies.add(movieListObject);
-
                 }
             }
         } catch (JSONException e) {
