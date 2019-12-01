@@ -45,8 +45,8 @@ public class MoviesGridAdapter extends RecyclerView.Adapter<MoviesGridAdapter.Mo
         Picasso.get()
                 .load(current.posterPath)
                 .fit()
-                .error(R.mipmap.ic_launcher_round)
-                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.drawable.ic_videocam_black_48dp)
+                .placeholder(R.drawable.ic_videocam_black_48dp)
                 .into((ImageView) holder.singleMovieImageView.findViewById(R.id.movie_poster_imageview));
 
         holder.itemView.setOnClickListener(
@@ -54,7 +54,7 @@ public class MoviesGridAdapter extends RecyclerView.Adapter<MoviesGridAdapter.Mo
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(mContext, DetailActivity.class);
-                        intent.putExtra("movie",current);
+                        intent.putExtra("movie", current);
                         mContext.startActivity(intent);
                     }
                 });

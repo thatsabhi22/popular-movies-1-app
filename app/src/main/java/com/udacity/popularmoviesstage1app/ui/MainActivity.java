@@ -30,14 +30,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String BASE_REQUEST_URL = "http://api.themoviedb.org/3/movie/";
 
     /**
-     * URL for movies data from the MoviesDB dataset
+     * sort_type variable determines the movie types filter
      */
     private static String sort_type = "popular";
 
     /**
-     * URL for movies data from the MoviesDB dataset
+     * API KEY URL Query for Movies DB API
      */
-    private static final String API_KEY = "?api_key=5dae56b7517d66c0d3da2e78ad58bc23";
+    private static final String API_KEY_QUERY = "?api_key=";
+
+    /**
+     * API KEY Value URL Query for Movies DB API
+     */
+    private static final String API_KEY_QUERY_VALUE = "<PLACE YOUR API KEY HERE>";
+
 
     private String movies_request_url = "";
 
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         moviesGridRecyclerView.setLayoutManager(mLayoutManager);
 
-        movies_request_url = BASE_REQUEST_URL + sort_type + API_KEY;
+        movies_request_url = BASE_REQUEST_URL + sort_type + API_KEY_QUERY + API_KEY_QUERY_VALUE;
 
         // Get a reference to the LoaderManager, in order to interact with loaders.
         loaderManager = getLoaderManager();
@@ -115,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 sort_type = "top_rated";
                 break;
         }
-        movies_request_url = BASE_REQUEST_URL + sort_type + API_KEY;
+        movies_request_url = BASE_REQUEST_URL + sort_type + API_KEY_QUERY + API_KEY_QUERY_VALUE;
         refreshMovieResults();
         return true;
     }

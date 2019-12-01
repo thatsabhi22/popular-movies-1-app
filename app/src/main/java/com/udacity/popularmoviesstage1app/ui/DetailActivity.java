@@ -42,8 +42,8 @@ public class DetailActivity extends AppCompatActivity {
             Picasso.get()
                     .load(movie.posterPath)
                     .fit()
-                    .error(R.mipmap.ic_launcher_round)
-                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.drawable.ic_videocam_black_48dp)
+                    .placeholder(R.drawable.ic_videocam_black_48dp)
                     .into(posterIV);
             ratingTV.setText(String.valueOf(movie.voterAverage));
             releaseDateTV.setText(movie.releaseDate);
