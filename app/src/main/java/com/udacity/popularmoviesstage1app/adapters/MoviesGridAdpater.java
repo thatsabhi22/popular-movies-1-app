@@ -1,6 +1,8 @@
 package com.udacity.popularmoviesstage1app.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.udacity.popularmoviesstage1app.R;
 import com.udacity.popularmoviesstage1app.models.MovieList;
+import com.udacity.popularmoviesstage1app.ui.DetailActivity;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,11 +23,12 @@ import java.util.List;
 public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.MoviesViewHolder> {
 
     private final LayoutInflater inflater;
-
-    public List<MovieList> movies = Collections.emptyList();
+    private final Context mContext;
+    private List<MovieList> movies = Collections.emptyList();
 
     public MoviesGridAdpater(Context mContext, List<MovieList> movies) {
         inflater = LayoutInflater.from(mContext);
+        this.mContext = mContext;
         this.movies = movies;
     }
 
@@ -38,17 +42,25 @@ public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.Mo
 
     @Override
     public void onBindViewHolder(@NonNull MoviesGridAdpater.MoviesViewHolder holder, int position) {
-        MovieList current = movies.get(position);
+        final MovieList current = movies.get(position);
 
         Picasso.get()
                 .load(current.posterPath)
                 .fit()
                 .error(R.mipmap.ic_launcher_round)
                 .placeholder(R.mipmap.ic_launcher_round)
-                .into((ImageView) holder.singleMovieImageView.findViewById (R.id.movie_poster_imageview));
+                .into((ImageView) holder.singleMovieImageView.findViewById(R.id.movie_poster_imageview));
 
-        holder.singleMovieIdTextView.setText(current.id);
         holder.singleMovieTitleTextView.setText(current.title);
+        holder.itemView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, DetailActivity.class);
+                        intent.putExtra("movie",current);
+                        mContext.startActivity(intent);
+                    }
+                });
     }
 
     @Override
@@ -69,7 +81,6 @@ public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.Mo
         public MoviesViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            singleMovieIdTextView = itemView.findViewById(R.id.movie_id_tv);
             singleMovieImageView = itemView.findViewById(R.id.movie_poster_imageview);
             singleMovieTitleTextView = itemView.findViewById(R.id.movie_title_tv);
         }

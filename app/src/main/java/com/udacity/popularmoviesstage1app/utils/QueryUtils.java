@@ -17,7 +17,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Helper methods related to requesting and receiving movies data from Movies DB.
@@ -132,7 +136,6 @@ public final class QueryUtils {
      */
     private static ArrayList<MovieList> extractFeatureFromJson(String moviesJSON) {
 
-        MovieList mv;
         ArrayList<MovieList> movies = new ArrayList<>();
 
         // If the JSON string is empty or null, then return early.
@@ -148,16 +151,26 @@ public final class QueryUtils {
             if (moviesArray.length() > 0) {
                 for (int i = 0; i < moviesArray.length(); i++) {
                     JSONObject movie = moviesArray.getJSONObject(i);
-                    String id = movie.getString("id");
                     String posterPath = movie.optString("poster_path");
                     String title = movie.optString("title");
+                    String releaseDate = movie.optString("release_date");
+                    String overview = movie.optString("overview");
+                    Double voterAverage = movie.optDouble("vote_average");
 
-                    MovieList movieListObject = new MovieList(id,title,posterPath);
+                    Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(releaseDate);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy");
+                    String MovieYear = dateFormat.format(date1);
+
+                    String voterAverageStr = String.valueOf(voterAverage) + "/10";
+
+                    MovieList movieListObject = new MovieList(title,posterPath,MovieYear,overview,voterAverageStr);
                     movies.add(movieListObject);
                 }
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the movies JSON results", e);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return movies;
     }
