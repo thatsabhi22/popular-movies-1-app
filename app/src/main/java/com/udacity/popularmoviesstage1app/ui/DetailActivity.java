@@ -1,12 +1,12 @@
 package com.udacity.popularmoviesstage1app.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.popularmoviesstage1app.R;
@@ -14,7 +14,7 @@ import com.udacity.popularmoviesstage1app.models.MovieList;
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView movieTitleTV,ratingTV,releaseDateTV,descriptionTV;
+    TextView movieTitleTV, ratingTV, releaseDateTV, descriptionTV;
     ImageView posterIV;
 
     @Override
@@ -35,10 +35,9 @@ public class DetailActivity extends AppCompatActivity {
 
         MovieList movie = intent.getParcelableExtra("movie");
 
-        if(movie == null){
+        if (movie == null) {
             closeOnError();
-        }
-        else{
+        } else {
             movieTitleTV.setText(movie.title);
             Picasso.get()
                     .load(movie.posterPath)

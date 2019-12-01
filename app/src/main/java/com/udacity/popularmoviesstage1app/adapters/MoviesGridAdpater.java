@@ -51,7 +51,6 @@ public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.Mo
                 .placeholder(R.mipmap.ic_launcher_round)
                 .into((ImageView) holder.singleMovieImageView.findViewById(R.id.movie_poster_imageview));
 
-        holder.singleMovieTitleTextView.setText(current.title);
         holder.itemView.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -75,14 +74,12 @@ public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.Mo
 
     class MoviesViewHolder extends RecyclerView.ViewHolder {
 
-        TextView singleMovieTitleTextView, singleMovieIdTextView;
         ImageView singleMovieImageView;
 
         public MoviesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             singleMovieImageView = itemView.findViewById(R.id.movie_poster_imageview);
-            singleMovieTitleTextView = itemView.findViewById(R.id.movie_title_tv);
         }
     }
 }

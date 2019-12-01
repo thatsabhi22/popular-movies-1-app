@@ -161,7 +161,7 @@ public final class QueryUtils {
                     DateFormat dateFormat = new SimpleDateFormat("yyyy");
                     String MovieYear = dateFormat.format(date1);
 
-                    String voterAverageStr = String.valueOf(voterAverage) + "/10";
+                    String voterAverageStr = voterAverage + "/10";
 
                     MovieList movieListObject = new MovieList(title,posterPath,MovieYear,overview,voterAverageStr);
                     movies.add(movieListObject);
