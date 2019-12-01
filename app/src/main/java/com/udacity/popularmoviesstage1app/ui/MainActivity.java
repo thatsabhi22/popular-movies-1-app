@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.udacity.popularmoviesstage1app.R;
-import com.udacity.popularmoviesstage1app.adapters.MoviesGridAdpater;
+import com.udacity.popularmoviesstage1app.adapters.MoviesGridAdapter;
 import com.udacity.popularmoviesstage1app.models.MovieList;
 import com.udacity.popularmoviesstage1app.tasks.MovieLoader;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int NUM_OF_COLUMNS = 2;
 
     private RecyclerView moviesGridRecyclerView;
-    private MoviesGridAdpater moviesGridAdpater;
+    private MoviesGridAdapter moviesGridAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     LoaderManager loaderManager;
 
@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         moviesGridRecyclerView = findViewById(R.id.MoviesGridRecyclerView);
 
-        moviesGridAdpater = new MoviesGridAdpater(this, new ArrayList<MovieList>());
+        moviesGridAdapter = new MoviesGridAdapter(this, new ArrayList<MovieList>());
 
-        moviesGridRecyclerView.setAdapter(moviesGridAdpater);
+        moviesGridRecyclerView.setAdapter(moviesGridAdapter);
 
         mLayoutManager = new GridLayoutManager(this, NUM_OF_COLUMNS);
 
@@ -88,13 +88,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<MovieList>> loader, List<MovieList> movies) {
-        moviesGridAdpater.setData(movies);
+        moviesGridAdapter.setData(movies);
     }
 
     @Override
     public void onLoaderReset(Loader<List<MovieList>> loader) {
         // Loader reset, so we can clear out our existing data.
-        moviesGridAdpater.setData(new ArrayList<MovieList>());
+        moviesGridAdapter.setData(new ArrayList<MovieList>());
     }
 
     @Override
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void refreshMovieResults(){
-        moviesGridAdpater.setData(new ArrayList<MovieList>());
+        moviesGridAdapter.setData(new ArrayList<MovieList>());
         getLoaderManager().restartLoader(MOVIE_LOADER_ID, null, this);
     }
 }

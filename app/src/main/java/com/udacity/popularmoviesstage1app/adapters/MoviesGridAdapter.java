@@ -2,12 +2,10 @@ package com.udacity.popularmoviesstage1app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,13 +18,13 @@ import com.udacity.popularmoviesstage1app.ui.DetailActivity;
 import java.util.Collections;
 import java.util.List;
 
-public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.MoviesViewHolder> {
+public class MoviesGridAdapter extends RecyclerView.Adapter<MoviesGridAdapter.MoviesViewHolder> {
 
     private final LayoutInflater inflater;
     private final Context mContext;
     private List<MovieList> movies = Collections.emptyList();
 
-    public MoviesGridAdpater(Context mContext, List<MovieList> movies) {
+    public MoviesGridAdapter(Context mContext, List<MovieList> movies) {
         inflater = LayoutInflater.from(mContext);
         this.mContext = mContext;
         this.movies = movies;
@@ -34,14 +32,14 @@ public class MoviesGridAdpater extends RecyclerView.Adapter<MoviesGridAdpater.Mo
 
     @NonNull
     @Override
-    public MoviesGridAdpater.MoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MoviesGridAdapter.MoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = (View) inflater.inflate(R.layout.single_movie_tile, parent, false);
         MoviesViewHolder viewHolder = new MoviesViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MoviesGridAdpater.MoviesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MoviesGridAdapter.MoviesViewHolder holder, int position) {
         final MovieList current = movies.get(position);
 
         Picasso.get()
