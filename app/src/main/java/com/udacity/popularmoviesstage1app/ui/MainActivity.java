@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     /**
      * API KEY Value URL Query for Movies DB API
      */
-    private static final String API_KEY_QUERY_VALUE = "5dae56b7517d66c0d3da2e78ad58bc23";
+    private static final String API_KEY_QUERY_VALUE = "<ADD YOUR API KEY HERE>";
     /**
      * Constant value for the movie loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
