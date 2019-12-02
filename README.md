@@ -24,6 +24,7 @@ You need to generate your own API Key to use this app.
 To obtain an API Key, Go to www.themoviedb.org and sign up.
 Replace your API Key on the MainActivity Constant with name 'API_KEY_QUERY_VALUE'
 
+## Screens
 ![Alt text](/Screenshots/1.png?raw=true)
 ![Alt text](/Screenshots/2.png?raw=true)
 ![Alt text](/Screenshots/3.png?raw=true)

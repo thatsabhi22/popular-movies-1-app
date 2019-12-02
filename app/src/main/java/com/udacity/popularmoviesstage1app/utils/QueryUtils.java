@@ -179,6 +179,11 @@ public final class QueryUtils {
         return movies;
     }
 
+    /**
+     * No Network Condition handled based on link below
+     * https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
+     */
+
     public static boolean isOnline() {
         try {
             int timeoutMs = 1500;
