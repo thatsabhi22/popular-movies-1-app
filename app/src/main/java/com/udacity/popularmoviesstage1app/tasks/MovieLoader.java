@@ -11,10 +11,14 @@ import java.util.List;
 
 public class MovieLoader extends AsyncTaskLoader<List<MovieList>> {
 
-    /** Tag for log messages */
+    /**
+     * Tag for log messages
+     */
     private static final String LOG_TAG = MovieLoader.class.getName();
 
-    /** Query URL */
+    /**
+     * Query URL
+     */
     private String mUrl;
 
     public MovieLoader(Context context, String url) {
@@ -29,7 +33,7 @@ public class MovieLoader extends AsyncTaskLoader<List<MovieList>> {
 
     @Override
     public List<MovieList> loadInBackground() {
-        if(TextUtils.isEmpty(mUrl)){
+        if (TextUtils.isEmpty(mUrl)) {
             return null;
         }
 
