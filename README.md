@@ -23,7 +23,8 @@ To obtain an API Key, Go to www.themoviedb.org and sign up.
 Replace your API Key on the MainActivity Constant with name 'API_KEY_QUERY_VALUE'
 
 ## Screens
-![Alt text](/Screenshots/1.png?raw=true)
-![Alt text](/Screenshots/2.png?raw=true)
-![Alt text](/Screenshots/3.png?raw=true)
-![Alt text](/Screenshots/4.png?raw=true)
+![1](https://user-images.githubusercontent.com/24782276/218276723-6209df9c-1ef8-4dcc-a63b-5366dc0ede8e.png)
+![2](https://user-images.githubusercontent.com/24782276/218276726-6f11ad48-b9cf-4421-b93a-cba856922dba.png)
+![3](https://user-images.githubusercontent.com/24782276/218276730-2fd2f114-d4c1-4511-a8c4-a36922ca58e0.png)
+![4](https://user-images.githubusercontent.com/24782276/218276732-38ea0b8c-7252-475d-872d-caedadfc7420.png)
+
